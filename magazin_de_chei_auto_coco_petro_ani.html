@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin de chei auto COCO | Petroșani - Aleea Poporului 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        coco: {
+                            dark: '#0B0F17',
+                            card: '#131B2E',
+                            accent: '#F59E0B',
+                            accentHover: '#D97706',
+                            blue: '#3B82F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-header {
+            background: rgba(11, 15, 23, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .amber-glow {
+            box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.35);
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.45);
+            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(245, 158, 11, 0.2);
+        }
+        .grid-bg {
+            background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            70% { transform: scale(1.9); opacity: 0; }
+            100% { transform: scale(1.9); opacity: 0; }
+        }
+        .pulse-dot::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background-color: inherit;
+            animation: pulse-ring 2s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-slate-950 pb-20 md:pb-0">
+
+    <div id="toast" class="fixed top-24 right-4 z-50 hidden transform transition-all duration-300">
+        <div class="glass-panel border-amber-500/50 bg-slate-900/95 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <span id="toast-message" class="text-sm font-medium">Copiat în clipboard!</span>
+        </div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-40 glass-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#acasa" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/25 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-key text-xl -rotate-45"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-black text-xl tracking-tight text-white">COCO</span>
+                            <span class="text-xs font-bold uppercase tracking-widest px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-400 border border-amber-500/30" data-i18n="brandBadge">Chei Auto</span>
+                        </div>
+                        <p class="text-xs text-slate-400 flex items-center gap-1">
+                            <i class="fa-solid fa-location-dot text-amber-500 text-[10px]"></i>
+                            <span>Aleea Poporului 1, Petroșani</span>
+                        </p>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+                    <a href="#acasa" class="hover:text-amber-400 transition-colors" data-i18n="navHome">Acasă</a>
+                    <a href="#servicii" class="hover:text-amber-400 transition-colors" data-i18n="navServices">Servicii</a>
+                    <a href="#estimator" class="hover:text-amber-400 transition-colors" data-i18n="navCalculator">Estimator Preț</a>
+                    <a href="#faq" class="hover:text-amber-400 transition-colors" data-i18n="navFaq">Întrebări Frecvente</a>
+                    <a href="#contact" class="hover:text-amber-400 transition-colors" data-i18n="navContact">Contact & Program</a>
+                </nav>
+
+                <div class="flex items-center gap-2.5 sm:gap-3">
+                    <a href="#contact" id="header-status-badge" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all">
+                        <span id="header-status-dot" class="relative w-2.5 h-2.5 rounded-full pulse-dot"></span>
+                        <span id="header-status-text">Se verifică...</span>
+                    </a>
+
+                    <button id="lang-toggle" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition-colors" aria-label="Switch Language">
+                        <i class="fa-solid fa-globe text-amber-400"></i>
+                        <span id="lang-current">RO</span>
+                        <span class="text-slate-500">/</span>
+                        <span id="lang-other" class="text-slate-400">EN</span>
+                    </button>
+
+                    <a href="tel:0726169868" class="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <span>0726 169 868</span>
+                    </a>
+
+                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2.5 rounded-xl bg-slate-800/80 text-slate-200 hover:text-amber-400 border border-slate-700/80" aria-label="Menu">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800/80 bg-slate-950/95 px-4 pt-3 pb-5 space-y-3">
+            <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                <span class="text-xs text-slate-400" data-i18n="liveStatusLabel">Status Atelier Petroșani:</span>
+                <div id="mobile-status-badge" class="inline-flex items-center gap-2 text-xs font-bold">
+                    <span id="mobile-status-dot" class="relative w-2 h-2 rounded-full pulse-dot"></span>
+                    <span id="mobile-status-text">...</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-1">
+                <a href="#acasa" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-slate-800/70 hover:text-amber-400" data-i18n="navHome">Acasă</a>
+                <a href="#servicii" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-slate-800/70 hover:text-amber-400" data-i18n="navServices">Servicii</a>
+                <a href="#estimator" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-slate-800/70 hover:text-amber-400" data-i18n="navCalculator">Estimator Preț</a>
+                <a href="#faq" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-slate-800/70 hover:text-amber-400" data-i18n="navFaq">Întrebări Frecvente</a>
+                <a href="#contact" class="mobile-nav-link px-3 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-slate-800/70 hover:text-amber-400" data-i18n="navContact">Contact & Program</a>
+            </div>
+            <div class="pt-2 flex gap-2">
+                <a href="tel:0726169868" class="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500 text-slate-950 font-bold text-sm py-3 rounded-xl">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>0726 169 868</span>
+                </a>
+                <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold text-sm py-3 rounded-xl border border-slate-700">
+                    <i class="fa-brands fa-waze text-sky-400"></i>
+                    <span>Waze</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="acasa" class="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden grid-bg">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+                            <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                            <span data-i18n="heroPill">Atelier Autorizat Multiplicări Chei Auto & Locuințe în Petroșani</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]">
+                            <span data-i18n="heroTitle1">Magazin de chei auto</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500"> COCO</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed" data-i18n="heroSubtitle">
+                            Soluții rapide și profesionale pe Aleea Poporului 1, Petroșani: copiere și programare chei auto cu cip, telecomenzi tip briceag sau Smart Key, înlocuire carcase uzate, baterii și multiplicare chei pentru locuințe.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-3.5 pt-2">
+                            <a href="tel:0726169868" class="inline-flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-7 py-4 rounded-2xl amber-glow transition-all text-base">
+                                <i class="fa-solid fa-phone-volume text-lg"></i>
+                                <span data-i18n="ctaCallNow">Sună Acum: 0726 169 868</span>
+                            </a>
+
+                            <a href="#servicii" class="inline-flex items-center justify-center gap-2.5 bg-slate-800/90 hover:bg-slate-700/90 text-white font-bold px-6 py-4 rounded-2xl border border-slate-700 transition-all text-base">
+                                <i class="fa-solid fa-screwdriver-wrench text-amber-400"></i>
+                                <span data-i18n="ctaSeeServices">Vezi Serviciile</span>
+                            </a>
+
+                            <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 font-bold px-6 py-4 rounded-2xl border border-sky-500/30 transition-all text-base">
+                                <i class="fa-brands fa-waze text-lg text-sky-400"></i>
+                                <span data-i18n="ctaDirections">Indicații Rutiere (Waze)</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4">
+                            <div class="glass-panel p-3.5 rounded-2xl flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold text-white" data-i18n="stat1Title">Cipuri & Transpondere</div>
+                                    <div class="text-xs text-slate-400" data-i18n="stat1Sub">Programare & clonare</div>
+                                </div>
+                            </div>
+                            <div class="glass-panel p-3.5 rounded-2xl flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold text-white" data-i18n="stat2Title">Execuție pe Loc</div>
+                                    <div class="text-xs text-slate-400" data-i18n="stat2Sub">10 - 45 minute în atelier</div>
+                                </div>
+                            </div>
+                            <div class="glass-panel p-3.5 rounded-2xl flex items-center gap-3 col-span-2 sm:col-span-1">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-house-lock"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold text-white" data-i18n="stat3Title">Auto & Imobiliare</div>
+                                    <div class="text-xs text-slate-400" data-i18n="stat3Sub">Toate tipurile de chei</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="glass-panel rounded-3xl p-6 sm:p-7 border border-slate-700/70 relative overflow-hidden shadow-2xl">
+                            <div class="flex items-center justify-between pb-5 mb-5 border-b border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h2 class="text-sm font-bold text-white uppercase tracking-wider" data-i18n="heroCardTitle">Info Rapid & Program</h2>
+                                        <p class="text-xs text-slate-400" id="ro-live-clock">Ora în Petroșani: --:--</p>
+                                    </div>
+                                </div>
+                                <div id="hero-status-pill" class="px-3 py-1 rounded-full text-xs font-bold border">
+                                    ...
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-950/80 rounded-2xl p-4 mb-5 border border-slate-800/90 flex items-center justify-between gap-4">
+                                <div class="space-y-1">
+                                    <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-400" data-i18n="diagnosticBadge">Tehnologie CNC & OBD2</span>
+                                    <p class="text-sm font-bold text-white" data-i18n="diagnosticTitle">Tăiere computerizată pe cod & sincronizare telecomenzi</p>
+                                    <p class="text-xs text-slate-400" data-i18n="diagnosticSub">Fără deteriorarea contactului sau a imobilizatorului</p>
+                                </div>
+                                <svg class="w-20 h-20 shrink-0 text-amber-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="12" y="25" width="44" height="50" rx="12" stroke="currentColor" stroke-width="4" fill="#1E293B"/>
+                                    <circle cx="34" cy="40" r="6" stroke="#F59E0B" stroke-width="3"/>
+                                    <rect x="24" y="54" width="20" height="6" rx="3" fill="#F59E0B"/>
+                                    <rect x="24" y="64" width="12" height="5" rx="2.5" fill="#94A3B8"/>
+                                    <path d="M56 45H90L94 50L88 55H82L78 51L74 55H66L62 51L56 55V45Z" fill="#F59E0B"/>
+                                    <path d="M68 30C75 30 81 36 81 43" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+                                    <path d="M68 22C79 22 89 31 89 43" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                                </svg>
+                            </div>
+
+                            <div class="space-y-2.5 text-sm mb-6">
+                                <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                                    <span class="text-slate-300 font-medium" data-i18n="hoursMonFri">Luni - Vineri</span>
+                                    <span class="font-mono font-bold text-amber-400">10:00 - 15:00</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                                    <span class="text-slate-300 font-medium" data-i18n="hoursSat">Sâmbătă</span>
+                                    <span class="font-mono font-bold text-amber-400">10:00 - 13:00</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                                    <span class="text-slate-300 font-medium" data-i18n="hoursSun">Duminică</span>
+                                    <span class="font-semibold text-rose-400" data-i18n="closedWord">Închis</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-2.5">
+                                <a href="#estimator" class="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-colors">
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <span data-i18n="heroCalcBtn">Calculează Preț Orientativ</span>
+                                </a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Magazin+de+chei+auto+COCO+Aleea+Poporului+1+Petrosani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 px-4 rounded-xl text-xs sm:text-sm border border-slate-700 transition-colors">
+                                    <i class="fa-solid fa-map-location-dot text-amber-400"></i>
+                                    <span>Google Maps</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-14 pt-8 border-t border-slate-800/80">
+                    <p class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-5" data-i18n="brandsHeadline">
+                        Compatibilitate extinsă pentru majoritatea mărcilor auto din România
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Dacia / Renault</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Volkswagen</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Audi / Škoda / Seat</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Ford</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Opel</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">BMW</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Mercedes-Benz</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Peugeot / Citroën</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Toyota / Hyundai / Kia</span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300">Fiat / Iveco</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicii" class="py-16 md:py-24 bg-slate-950/60 border-t border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20" data-i18n="servicesBadge">Catalog de Servicii</span>
+                    <h2 class="text-2xl sm:text-4xl font-black text-white mt-3" data-i18n="servicesTitle">Servicii Profesionale Chei Auto & Locuințe</h2>
+                    <p class="text-slate-400 mt-3 text-sm sm:text-base" data-i18n="servicesSub">
+                        Selectează categoria dorită pentru a vedea detaliile și timpul mediu de execuție în atelierul nostru din Petroșani.
+                    </p>
+                </div>
+
+                <div id="service-filters" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+                    <button type="button" data-filter="all" class="service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20">
+                        <i class="fa-solid fa-layer-group mr-1.5"></i>
+                        <span data-i18n="filterAll">Toate Serviciile</span>
+                    </button>
+                    <button type="button" data-filter="auto" class="service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">
+                        <i class="fa-solid fa-car-side mr-1.5 text-amber-400"></i>
+                        <span data-i18n="filterAuto">Chei Auto & Cipuri</span>
+                    </button>
+                    <button type="button" data-filter="remotes" class="service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">
+                        <i class="fa-solid fa-tower-broadcast mr-1.5 text-amber-400"></i>
+                        <span data-i18n="filterRemotes">Telecomenzi & Carcase</span>
+                    </button>
+                    <button type="button" data-filter="home" class="service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">
+                        <i class="fa-solid fa-house-chimney-window mr-1.5 text-amber-400"></i>
+                        <span data-i18n="filterHome">Chei Locuințe & Yale</span>
+                    </button>
+                    <button type="button" data-filter="repairs" class="service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">
+                        <i class="fa-solid fa-battery-full mr-1.5 text-amber-400"></i>
+                        <span data-i18n="filterRepairs">Reparații & Înlocuire Baterii</span>
+                    </button>
+                </div>
+
+                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <section id="estimator" class="py-16 md:py-24 relative overflow-hidden border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-700/80">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-11 h-11 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg shadow-lg shadow-amber-500/20">
+                                <i class="fa-solid fa-Sliders"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400" data-i18n="calcBadge">Calculator Interactiv</span>
+                                <h2 class="text-xl sm:text-2xl font-black text-white" data-i18n="calcTitle">Estimator Preț & Solicitare Rapidă</h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label for="calc-service" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="calcStep1">1. Alege tipul serviciului dorit</label>
+                                <select id="calc-service" class="w-full bg-slate-900/95 border border-slate-700 rounded-xl px-4 py-3.5 text-sm font-medium text-white focus:outline-none focus:border-amber-500 transition-colors"></select>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div id="brand-wrapper">
+                                    <label for="calc-brand" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="calcStep2">2. Marca autoturismului / Tip cheie</label>
+                                    <select id="calc-brand" class="w-full bg-slate-900/95 border border-slate-700 rounded-xl px-4 py-3.5 text-sm font-medium text-white focus:outline-none focus:border-amber-500 transition-colors"></select>
+                                </div>
+
+                                <div>
+                                    <label for="calc-year" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="calcStep3">3. Anul fabricației / Nivel securitate</label>
+                                    <select id="calc-year" class="w-full bg-slate-900/95 border border-slate-700 rounded-xl px-4 py-3.5 text-sm font-medium text-white focus:outline-none focus:border-amber-500 transition-colors"></select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="calcStep4">4. Situație actuală / Urgență</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="urgency-buttons">
+                                    <button type="button" data-urgency="spare" class="urgency-btn text-left p-3.5 rounded-xl border border-amber-500 bg-amber-500/15 text-white transition-all">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <i class="fa-solid fa-copy text-amber-400 text-sm"></i>
+                                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                        </div>
+                                        <div class="text-xs font-bold" data-i18n="urg1Title">Am o cheie funcțională</div>
+                                        <div class="text-[11px] text-slate-400" data-i18n="urg1Sub">Doresc o copie de rezervă</div>
+                                    </button>
+
+                                    <button type="button" data-urgency="damaged" class="urgency-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-slate-700 transition-all">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <i class="fa-solid fa-screwdriver-wrench text-amber-400 text-sm"></i>
+                                            <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+                                        </div>
+                                        <div class="text-xs font-bold" data-i18n="urg2Title">Cheie uzată / defectă</div>
+                                        <div class="text-[11px] text-slate-400" data-i18n="urg2Sub">Butoane sau lamă ruptă</div>
+                                    </button>
+
+                                    <button type="button" data-urgency="urgent" class="urgency-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-slate-700 transition-all">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+                                            <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+                                        </div>
+                                        <div class="text-xs font-bold" data-i18n="urg3Title">Prioritar azi în atelier</div>
+                                        <div class="text-[11px] text-slate-400" data-i18n="urg3Sub">Verificare imediată</div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="calc-notes" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="calcStep5">5. Detalii opționale (ex: modelul exact, ex. Logan 2018, Golf 6)</label>
+                                <input id="calc-notes" type="text" placeholder="Ex: VW Golf 6 2011 / Dacia Duster 2019..." class="w-full bg-slate-900/95 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-amber-500/30 relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-amber-500/15 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400" data-i18n="estResultBadge">Rezultat Orientativ</span>
+                                <h3 class="text-lg font-bold text-white" id="est-service-Title">Multiplicare cheie auto cu cip</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300" id="est-time-badge">~20-35 min</span>
+                        </div>
+
+                        <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-5 mb-5">
+                            <div class="text-xs text-slate-400 mb-1" data-i18n="estPriceLabel">Interval de preț estimat:</div>
+                            <div class="text-3xl sm:text-4xl font-black text-amber-400 font-mono tracking-tight" id="est-price-value">150 - 320 RON</div>
+                            <p class="text-[11px] text-slate-400 mt-2 leading-relaxed" data-i18n="estDisclaimer">
+                                *Prețul exact se confirmă în atelierul din Aleea Poporului 1 după identificarea tipului de cip / seriei cheii.
+                            </p>
+                        </div>
+
+                        <div class="bg-slate-900/70 border border-slate-800/80 rounded-2xl p-4 mb-6 space-y-2 text-xs">
+                            <div class="font-bold text-slate-200 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-file-lines text-amber-400"></i>
+                                <span data-i18n="summaryHeader">Rezumat Solicitare către COCO Chei Auto:</span>
+                            </div>
+                            <p id="inquiry-preview-text" class="text-slate-300 font-mono text-xs leading-relaxed bg-slate-950/80 p-3 rounded-xl border border-slate-800"></p>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <a id="whatsapp-inquiry-btn" href="https://wa.me/40726169868" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-3.5 px-5 rounded-xl shadow-lg shadow-emerald-500/20 transition-all text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span data-i18n="sendWhatsappBtn">Trimite Solicitarea pe WhatsApp</span>
+                            </a>
+
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <a id="sms-inquiry-btn" href="sms:0726169868" class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl border border-slate-700 transition-all text-xs sm:text-sm">
+                                    <i class="fa-solid fa-comment-sms text-amber-400"></i>
+                                    <span data-i18n="sendSmsBtn">Trimite prin SMS</span>
+                                </a>
+
+                                <button id="copy-inquiry-btn" type="button" class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl border border-slate-700 transition-all text-xs sm:text-sm">
+                                    <i class="fa-solid fa-copy text-amber-400"></i>
+                                    <span data-i18n="copySummaryBtn">Copiază Textul</span>
+                                </button>
+                            </div>
+
+                            <a href="tel:0726169868" class="w-full inline-flex items-center justify-center gap-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 font-bold py-3 px-4 rounded-xl transition-all text-xs sm:text-sm">
+                                <i class="fa-solid fa-phone"></i>
+                                <span data-i18n="callDirectEstimator">Sau sună direct la 0726 169 868</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 md:py-24 bg-slate-950/60 border-t border-slate-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20" data-i18n="faqBadge">Info Util Clienți</span>
+                    <h2 class="text-2xl sm:text-4xl font-black text-white mt-3" data-i18n="faqTitle">Întrebări Frecvente (FAQ)</h2>
+                    <p class="text-slate-400 mt-2 text-sm sm:text-base" data-i18n="faqSub">
+                        Tot ce trebuie să știi înainte de a veni la atelierul COCO Chei Auto din Petroșani.
+                    </p>
+                </div>
+
+                <div id="faq-container" class="space-y-3.5"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 border-t border-slate-800/80 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20" data-i18n="contactBadge">Locație & Contact</span>
+                    <h2 class="text-2xl sm:text-4xl font-black text-white mt-3" data-i18n="contactTitle">Te așteptăm pe Aleea Poporului 1, Petroșani</h2>
+                    <p class="text-slate-400 mt-2 text-sm sm:text-base" data-i18n="contactSub">
+                        Vino direct la atelier în timpul programului sau sună-ne pentru a verifica stocul carcasei sau cheii pentru mașina ta.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <div class="lg:col-span-5 flex flex-col justify-between glass-panel rounded-3xl p-6 sm:p-8 border border-slate-700/80 space-y-6">
+                        <div class="space-y-5">
+                            <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                                <div>
+                                    <h3 class="text-lg font-extrabold text-white">Magazin de chei auto COCO</h3>
+                                    <p class="text-xs text-slate-400">Petroșani, Jud. Hunedoara, România</p>
+                                </div>
+                                <div id="contact-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold border">
+                                    <span id="contact-status-dot" class="relative w-2 h-2 rounded-full pulse-dot"></span>
+                                    <span id="contact-status-text">...</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3.5">
+                                <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-xs text-slate-400" data-i18n="addressLabel">Adresă Atelier</div>
+                                        <div class="text-sm font-bold text-white">Aleea Poporului 1, Petroșani</div>
+                                        <div class="text-xs text-slate-400">Jud. Hunedoara, România</div>
+                                    </div>
+                                    <button type="button" id="copy-address-btn" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-amber-400 font-semibold border border-slate-700" title="Copy">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+
+                                <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-xs text-slate-400" data-i18n="phoneLabel">Telefon Rapid & WhatsApp</div>
+                                        <a href="tel:0726169868" class="text-base font-extrabold text-amber-400 hover:underline font-mono">0726 169 868</a>
+                                        <div class="text-xs text-slate-400">+40 726 169 868</div>
+                                    </div>
+                                    <button type="button" id="copy-phone-btn" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-amber-400 font-semibold border border-slate-700" title="Copy">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300" data-i18n="scheduleTableTitle">Program de Funcționare</h4>
+                                    <span id="next-open-helper" class="text-[11px] text-amber-400 font-medium"></span>
+                                </div>
+                                <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950/70 divide-y divide-slate-800/80 text-xs sm:text-sm" id="schedule-rows">
+                                    <div data-day="1" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="dayMon">Luni</span>
+                                        <span class="font-mono font-semibold">10:00 - 15:00</span>
+                                    </div>
+                                    <div data-day="2" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="dayTue">Marți</span>
+                                        <span class="font-mono font-semibold">10:00 - 15:00</span>
+                                    </div>
+                                    <div data-day="3" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="dayWed">Miercuri</span>
+                                        <span class="font-mono font-semibold">10:00 - 15:00</span>
+                                    </div>
+                                    <div data-day="4" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="dayThu">Joi</span>
+                                        <span class="font-mono font-semibold">10:00 - 15:00</span>
+                                    </div>
+                                    <div data-day="5" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="dayFri">Vineri</span>
+                                        <span class="font-mono font-semibold">10:00 - 15:00</span>
+                                    </div>
+                                    <div data-day="6" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="daySat">Sâmbătă</span>
+                                        <span class="font-mono font-semibold">10:00 - 13:00</span>
+                                    </div>
+                                    <div data-day="0" class="schedule-row flex items-center justify-between px-4 py-2.5">
+                                        <span data-i18n="daySun">Duminică</span>
+                                        <span class="font-semibold text-rose-400" data-i18n="closedWord">Închis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <a href="tel:0726169868" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span data-i18n="btnCallDirect">Sună: 0726 169 868</span>
+                            </a>
+                            <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all">
+                                <i class="fa-brands fa-waze text-base"></i>
+                                <span data-i18n="btnOpenWaze">Navighează cu Waze</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 flex flex-col glass-panel rounded-3xl overflow-hidden border border-slate-700/80">
+                        <div class="p-4 sm:p-5 bg-slate-900/90 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="text-xs sm:text-sm font-bold text-white" data-i18n="mapHeaderTitle">Hartă Interactivă — Aleea Poporului 1, Petroșani</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/30 text-xs font-bold flex items-center gap-1.5">
+                                    <i class="fa-brands fa-waze"></i>
+                                    <span>Waze Live Map</span>
+                                </a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Magazin+de+chei+auto+COCO+Aleea+Poporului+1+Petrosani" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5">
+                                    <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
+                                    <span>Google Maps</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative flex-1 min-h-[340px] sm:min-h-[420px] bg-slate-950">
+                            <iframe
+                                title="Harta Magazin de chei auto COCO Petrosani"
+                                src="https://maps.google.com/maps?q=Aleea%20Poporului%201,%20Petrosani,%20Romania&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                class="w-full h-full min-h-[340px] sm:min-h-[420px] border-0"
+                                style="filter: contrast(1.05) brightness(0.92);"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <div class="p-4 sm:p-5 bg-slate-900/95 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <div class="flex items-center gap-2.5 text-slate-300">
+                                <i class="fa-solid fa-square-parking text-amber-400 text-base"></i>
+                                <span data-i18n="mapTip1">Acces auto facil pentru proba cheii la mașină</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 text-slate-300">
+                                <i class="fa-solid fa-compass text-amber-400 text-base"></i>
+                                <span data-i18n="mapTip2">Zonă centrală accesibilă în Petroșani</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 text-slate-300">
+                                <i class="fa-solid fa-check-double text-amber-400 text-base"></i>
+                                <span data-i18n="mapTip3">Testare telecomandă și cip pe loc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-bold">
+                    <i class="fa-solid fa-key -rotate-45"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-white">Magazin de chei auto COCO</span>
+                    <span class="mx-1.5 text-slate-600">|</span>
+                    <span>Aleea Poporului 1, Petroșani, Jud. Hunedoara</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:0726169868" class="hover:text-amber-400 transition-colors font-mono font-bold">0726 169 868</a>
+                <span class="text-slate-700">•</span>
+                <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">Waze</a>
+                <span class="text-slate-700">•</span>
+                <span data-i18n="footerRights">© Toate drepturile rezervate.</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-header border-t border-slate-800 px-3 py-2.5">
+        <div class="grid grid-cols-3 gap-2 max-w-md mx-auto">
+            <a href="tel:0726169868" class="flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 font-extrabold py-2.5 rounded-xl text-xs shadow-md">
+                <i class="fa-solid fa-phone"></i>
+                <span data-i18n="mobBarCall">Sună Acum</span>
+            </a>
+            <a href="https://wa.me/40726169868" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold py-2.5 rounded-xl text-xs">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://www.waze.com/live-map/directions/ro/hd/petrosani/magazin-de-chei-auto-coco" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold py-2.5 rounded-xl text-xs">
+                <i class="fa-brands fa-waze text-sm"></i>
+                <span>Waze</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const i18nData = {
+            ro: {
+                brandBadge: "Chei Auto",
+                navHome: "Acasă",
+                navServices: "Servicii",
+                navCalculator: "Estimator Preț",
+                navFaq: "Întrebări Frecvente",
+                navContact: "Contact & Program",
+                liveStatusLabel: "Status Atelier Petroșani:",
+                heroPill: "Atelier Autorizat Multiplicări Chei Auto & Locuințe în Petroșani",
+                heroTitle1: "Magazin de chei auto",
+                heroSubtitle: "Soluții rapide și profesionale pe Aleea Poporului 1, Petroșani: copiere și programare chei auto cu cip, telecomenzi tip briceag sau Smart Key, înlocuire carcase uzate, baterii și multiplicare chei pentru locuințe.",
+                ctaCallNow: "Sună Acum: 0726 169 868",
+                ctaSeeServices: "Vezi Serviciile",
+                ctaDirections: "Indicații Rutiere (Waze)",
+                stat1Title: "Cipuri & Transpondere",
+                stat1Sub: "Programare & clonare",
+                stat2Title: "Execuție pe Loc",
+                stat2Sub: "10 - 45 minute în atelier",
+                stat3Title: "Auto & Imobiliare",
+                stat3Sub: "Toate tipurile de chei",
+                heroCardTitle: "Info Rapid & Program",
+                diagnosticBadge: "Tehnologie CNC & OBD2",
+                diagnosticTitle: "Tăiere computerizată pe cod & sincronizare telecomenzi",
+                diagnosticSub: "Fără deteriorarea contactului sau a imobilizatorului",
+                hoursMonFri: "Luni - Vineri",
+                hoursSat: "Sâmbătă",
+                hoursSun: "Duminică",
+                closedWord: "Închis",
+                heroCalcBtn: "Calculează Preț Orientativ",
+                brandsHeadline: "Compatibilitate extinsă pentru majoritatea mărcilor auto din România",
+                servicesBadge: "Catalog de Servicii",
+                servicesTitle: "Servicii Profesionale Chei Auto & Locuințe",
+                servicesSub: "Selectează categoria dorită pentru a vedea detaliile și timpul mediu de execuție în atelierul nostru din Petroșani.",
+                filterAll: "Toate Serviciile",
+                filterAuto: "Chei Auto & Cipuri",
+                filterRemotes: "Telecomenzi & Carcase",
+                filterHome: "Chei Locuințe & Yale",
+                filterRepairs: "Reparații & Înlocuire Baterii",
+                calcBadge: "Calculator Interactiv",
+                calcTitle: "Estimator Preț & Solicitare Rapidă",
+                calcStep1: "1. Alege tipul serviciului dorit",
+                calcStep2: "2. Marca autoturismului / Tip cheie",
+                calcStep3: "3. Anul fabricației / Nivel securitate",
+                calcStep4: "4. Situație actuală / Urgență",
+                calcStep5: "5. Detalii opționale (ex: modelul exact, ex. Logan 2018, Golf 6)",
+                urg1Title: "Am o cheie funcțională",
+                urg1Sub: "Doresc o copie de rezervă",
+                urg2Title: "Cheie uzată / defectă",
+                urg2Sub: "Butoane sau lamă ruptă",
+                urg3Title: "Prioritar azi în atelier",
+                urg3Sub: "Verificare imediată",
+                estResultBadge: "Rezultat Orientativ",
+                estPriceLabel: "Interval de preț estimat:",
+                estDisclaimer: "*Prețul exact se confirmă în atelierul din Aleea Poporului 1 după identificarea tipului de cip / seriei cheii.",
+                summaryHeader: "Rezumat Solicitare către COCO Chei Auto:",
+                sendWhatsappBtn: "Trimite Solicitarea pe WhatsApp",
+                sendSmsBtn: "Trimite prin SMS",
+                copySummaryBtn: "Copiază Textul",
+                callDirectEstimator: "Sau sună direct la 0726 169 868",
+                faqBadge: "Info Util Clienți",
+                faqTitle: "Întrebări Frecvente (FAQ)",
+                faqSub: "Tot ce trebuie să știi înainte de a veni la atelierul COCO Chei Auto din Petroșani.",
+                contactBadge: "Locație & Contact",
+                contactTitle: "Te așteptăm pe Aleea Poporului 1, Petroșani",
+                contactSub: "Vino direct la atelier în timpul programului sau sună-ne pentru a verifica stocul carcasei sau cheii pentru mașina ta.",
+                addressLabel: "Adresă Atelier",
+                phoneLabel: "Telefon Rapid & WhatsApp",
+                scheduleTableTitle: "Program de Funcționare",
+                dayMon: "Luni",
+                dayTue: "Marți",
+                dayWed: "Miercuri",
+                dayThu: "Joi",
+                dayFri: "Vineri",
+                daySat: "Sâmbătă",
+                daySun: "Duminică",
+                btnCallDirect: "Sună: 0726 169 868",
+                btnOpenWaze: "Navighează cu Waze",
+                mapHeaderTitle: "Hartă Interactivă — Aleea Poporului 1, Petroșani",
+                mapTip1: "Acces auto facil pentru proba cheii la mașină",
+                mapTip2: "Zonă centrală accesibilă în Petroșani",
+                mapTip3: "Testare telecomandă și cip pe loc",
+                footerRights: "© Toate drepturile rezervate.",
+                mobBarCall: "Sună Acum",
+                statusOpen: "DESCHIS ACUM",
+                statusClosed: "ÎNCHIS ACUM",
+                closesAt: "Deschis până la",
+                opensTodayAt: "Se deschide azi la 10:00",
+                opensTomorrowAt: "Se deschide mâine la 10:00",
+                opensMondayAt: "Se deschide Luni la 10:00",
+                roClockPrefix: "Ora în Petroșani:",
+                selectInCalcBtn: "Estimează în Calculator",
+                copiedToast: "Informația a fost copiată în clipboard!",
+                todayTag: "AZI"
+            },
+            en: {
+                brandBadge: "Auto Keys",
+                navHome: "Home",
+                navServices: "Services",
+                navCalculator: "Price Estimator",
+                navFaq: "FAQ",
+                navContact: "Contact & Hours",
+                liveStatusLabel: "Petroșani Workshop Status:",
+                heroPill: "Authorized Automotive & Residential Key Duplication in Petroșani",
+                heroTitle1: "COCO Auto Key",
+                heroSubtitle: "Fast and professional locksmith solutions at Aleea Poporului 1, Petroșani: transponder car key duplication and programming, flip keys & Smart Keys, worn shell replacement, batteries, and residential house keys.",
+                ctaCallNow: "Call Now: 0726 169 868",
+                ctaSeeServices: "Explore Services",
+                ctaDirections: "Get Directions (Waze)",
+                stat1Title: "Chips & Transponders",
+                stat1Sub: "Programming & cloning",
+                stat2Title: "On-the-Spot Service",
+                stat2Sub: "10 - 45 mins in workshop",
+                stat3Title: "Auto & Residential",
+                stat3Sub: "All key types covered",
+                heroCardTitle: "Quick Info & Hours",
+                diagnosticBadge: "CNC & OBD2 Technology",
+                diagnosticTitle: "Computerized precision key cutting & remote syncing",
+                diagnosticSub: "Safe for your vehicle's ignition & immobilizer system",
+                hoursMonFri: "Monday - Friday",
+                hoursSat: "Saturday",
+                hoursSun: "Sunday",
+                closedWord: "Closed",
+                heroCalcBtn: "Calculate Estimated Price",
+                brandsHeadline: "Wide compatibility across major European & Asian car brands",
+                servicesBadge: "Service Catalog",
+                servicesTitle: "Professional Auto & Home Key Services",
+                servicesSub: "Filter by category below to inspect details and average turnaround times at our Petroșani shop.",
+                filterAll: "All Services",
+                filterAuto: "Car Keys & Chips",
+                filterRemotes: "Remotes & Shells",
+                filterHome: "Home Keys & Locks",
+                filterRepairs: "Repairs & Batteries",
+                calcBadge: "Interactive Calculator",
+                calcTitle: "Price Estimator & Quick Inquiry",
+                calcStep1: "1. Select required service",
+                calcStep2: "2. Car brand / Key system",
+                calcStep3: "3. Production year / Security tier",
+                calcStep4: "4. Current situation / Urgency",
+                calcStep5: "5. Optional details (e.g. exact model: Logan 2018, Golf 6)",
+                urg1Title: "I have a working key",
+                urg1Sub: "I want a spare copy",
+                urg2Title: "Worn / damaged key",
+                urg2Sub: "Broken buttons or blade",
+                urg3Title: "Priority today in shop",
+                urg3Sub: "Immediate inspection",
+                estResultBadge: "Orientative Estimate",
+                estPriceLabel: "Estimated price range:",
+                estDisclaimer: "*Exact price is confirmed at our Aleea Poporului 1 shop after inspecting your transponder chip / key profile.",
+                summaryHeader: "Inquiry Summary for COCO Chei Auto:",
+                sendWhatsappBtn: "Send Inquiry via WhatsApp",
+                sendSmsBtn: "Send via SMS",
+                copySummaryBtn: "Copy Summary",
+                callDirectEstimator: "Or call directly at 0726 169 868",
+                faqBadge: "Customer Guide",
+                faqTitle: "Frequently Asked Questions",
+                faqSub: "Everything you need to know before visiting COCO Chei Auto in Petroșani.",
+                contactBadge: "Location & Contact",
+                contactTitle: "Visit Us at Aleea Poporului 1, Petroșani",
+                contactSub: "Drop by our shop during opening hours or call ahead to check shell or transponder stock for your vehicle.",
+                addressLabel: "Workshop Address",
+                phoneLabel: "Direct Phone & WhatsApp",
+                scheduleTableTitle: "Opening Hours",
+                dayMon: "Monday",
+                dayTue: "Tuesday",
+                dayWed: "Wednesday",
+                dayThu: "Thursday",
+                dayFri: "Friday",
+                daySat: "Saturday",
+                daySun: "Sunday",
+                btnCallDirect: "Call: 0726 169 868",
+                btnOpenWaze: "Navigate with Waze",
+                mapHeaderTitle: "Interactive Map — Aleea Poporului 1, Petroșani",
+                mapTip1: "Easy car access for on-site key testing",
+                mapTip2: "Accessible location in Petroșani",
+                mapTip3: "Immediate remote & transponder testing",
+                footerRights: "© All rights reserved.",
+                mobBarCall: "Call Now",
+                statusOpen: "OPEN NOW",
+                statusClosed: "CLOSED NOW",
+                closesAt: "Open today until",
+                opensTodayAt: "Opens today at 10:00",
+                opensTomorrowAt: "Opens tomorrow at 10:00",
+                opensMondayAt: "Opens Monday at 10:00",
+                roClockPrefix: "Local time in Petroșani:",
+                selectInCalcBtn: "Estimate in Calculator",
+                copiedToast: "Copied to clipboard!",
+                todayTag: "TODAY"
+            }
+        };
+
+        const servicesList = [
+            {
+                id: "chip_key",
+                category: "auto",
+                icon: "fa-microchip",
+                priceRange: "150 - 320 RON",
+                timeEst: "20 - 35 min",
+                ro: {
+                    title: "Multiplicare Cheie Auto cu Cip (Transponder)",
+                    desc: "Tăiere mecanică de precizie și clonare/programare cip imobilizator pentru pornirea motorului.",
+                    tag: "Cele mai solicitate"
+                },
+                en: {
+                    title: "Transponder Car Key Duplication",
+                    desc: "High-precision mechanical blade cutting plus immobilizer transponder chip cloning/programming.",
+                    tag: "Most Popular"
+                }
+            },
+            {
+                id: "remote_key",
+                category: "remotes",
+                icon: "fa-car-on",
+                priceRange: "280 - 550 RON",
+                timeEst: "30 - 45 min",
+                ro: {
+                    title: "Cheie Auto cu Telecomandă / Tip Briceag",
+                    desc: "Cheie completă cu butoane de închidere centralizată, cip programat și lamă frezată pe mașina ta.",
+                    tag: "Cheie + Telecomandă"
+                },
+                en: {
+                    title: "Flip Key & Remote Car Key Programming",
+                    desc: "Complete remote key with central locking buttons, programmed transponder chip and precision cut blade.",
+                    tag: "Key + Remote"
+                }
+            },
+            {
+                id: "smart_key",
+                category: "auto",
+                icon: "fa-wifi",
+                priceRange: "420 - 850 RON",
+                timeEst: "35 - 60 min",
+                ro: {
+                    title: "Cartele Auto & Chei Smart (Keyless Go)",
+                    desc: "Programare cartele Renault/Dacia și chei de proximitate Smart Key pentru autoturisme moderne.",
+                    tag: "Keyless / Start-Stop"
+                },
+                en: {
+                    title: "Smart Keys & Keyless Go Cards",
+                    desc: "Programming for Renault/Dacia key cards and proximity Smart Keys for push-button start vehicles.",
+                    tag: "Keyless / Start-Stop"
+                }
+            },
+            {
+                id: "shell_replace",
+                category: "remotes",
+                icon: "fa-wand-magic-sparkles",
+                priceRange: "50 - 130 RON",
+                timeEst: "10 - 20 min",
+                ro: {
+                    title: "Înlocuire Carcasă Cheie Auto & Lamă",
+                    desc: "Transferăm placa electronică și cipul original într-o carcasă nouă atunci când butoanele s-au spart.",
+                    tag: "Recondiționare"
+                },
+                en: {
+                    title: "Car Key Shell & Blade Replacement",
+                    desc: "We transfer your original electronics and transponder into a brand-new key shell when buttons wear out.",
+                    tag: "Refurbishment"
+                }
+            },
+            {
+                id: "switch_battery",
+                category: "repairs",
+                icon: "fa-battery-full",
+                priceRange: "20 - 80 RON",
+                timeEst: "5 - 15 min",
+                ro: {
+                    title: "Înlocuire Baterii & Micro-Contacte (Butoane)",
+                    desc: "Schimb baterii CR2032/CR2025/CR1620 de calitate și lipire micro-contacte pe placa telecomenzii.",
+                    tag: "Pe loc"
+                },
+                en: {
+                    title: "Battery & Micro-Switch Soldering Repair",
+                    desc: "Quality lithium key fob battery replacement and micro-switch button soldering on circuit boards.",
+                    tag: "Instant Service"
+                }
+            },
+            {
+                id: "home_keys",
+                category: "home",
+                icon: "fa-key",
+                priceRange: "15 - 65 RON",
+                timeEst: "2 - 10 min",
+                ro: {
+                    title: "Multiplicare Chei Locuințe, Yale & Amprentă",
+                    desc: "Copiere rapidă pentru chei plate de apartament, chei cu amprentă, chei tip cruce, lacăte și cutii poștale.",
+                    tag: "Rezidențial"
+                },
+                en: {
+                    title: "Residential Keys, Cylinder & Dimple Keys",
+                    desc: "Fast duplication for standard apartment keys, high-security dimple keys, cross keys, and padlocks.",
+                    tag: "Residential"
+                }
+            }
+        ];
+
+        const calculatorCatalog = {
+            chip_key: {
+                baseMin: 150,
+                baseMax: 290,
+                time: "20 - 35 min",
+                isAuto: true,
+                ro: "Multiplicare cheie auto cu cip (fără telecomandă)",
+                en: "Transponder car key duplication (no remote)"
+            },
+            remote_key: {
+                baseMin: 280,
+                baseMax: 520,
+                time: "30 - 45 min",
+                isAuto: true,
+                ro: "Cheie auto cu telecomandă / briceag",
+                en: "Remote flip car key (with remote buttons)"
+            },
+            smart_key: {
+                baseMin: 420,
+                baseMax: 800,
+                time: "35 - 60 min",
+                isAuto: true,
+                ro: "Cartelă / Smart Key (Keyless Go)",
+                en: "Key Card / Proximity Smart Key"
+            },
+            shell_replace: {
+                baseMin: 50,
+                baseMax: 120,
+                time: "10 - 20 min",
+                isAuto: true,
+                ro: "Înlocuire carcasă cheie auto",
+                en: "Car key shell / housing replacement"
+            },
+            switch_battery: {
+                baseMin: 20,
+                baseMax: 80,
+                time: "5 - 15 min",
+                isAuto: true,
+                ro: "Înlocuire baterie / reparație micro-contacte",
+                en: "Key battery replacement / micro-switch repair"
+            },
+            home_keys: {
+                baseMin: 15,
+                baseMax: 60,
+                time: "3 - 10 min",
+                isAuto: false,
+                ro: "Cheie cilindru / yală / amprentă locuință",
+                en: "Residential cylinder / dimple house key"
+            }
+        };
+
+        const brandMultipliers = [
+            { id: "dacia_renault", factor: 1.0, ro: "Dacia / Renault", en: "Dacia / Renault" },
+            { id: "vag", factor: 1.12, ro: "Volkswagen / Audi / Škoda / Seat", en: "Volkswagen / Audi / Škoda / Seat" },
+            { id: "ford_opel", factor: 1.05, ro: "Ford / Opel", en: "Ford / Opel" },
+            { id: "bmw_merc", factor: 1.35, ro: "BMW / Mercedes-Benz", en: "BMW / Mercedes-Benz" },
+            { id: "psa_fiat", factor: 1.05, ro: "Peugeot / Citroën / Fiat", en: "Peugeot / Citroën / Fiat" },
+            { id: "asian", factor: 1.1, ro: "Toyota / Hyundai / Kia / Nissan", en: "Toyota / Hyundai / Kia / Nissan" },
+            { id: "other", factor: 1.0, ro: "Altă marcă auto / Cheie locuință", en: "Other car brand / Residential key" }
+        ];
+
+        const yearBrackets = [
+            { id: "pre2008", factor: 0.9, ro: "Până în 2008 (Standard)", en: "Up to 2008 (Standard)" },
+            { id: "2009_2016", factor: 1.0, ro: "2009 - 2016 (Imobilizator Gen. 2)", en: "2009 - 2016 (Gen. 2 Immobilizer)" },
+            { id: "post2017", factor: 1.2, ro: "2017 - Prezent (Securitate ridicată)", en: "2017 - Present (High Security)" }
+        ];
+
+        const faqItems = [
+            {
+                ro: {
+                    q: "Este necesar să vin cu mașina la atelier pentru o copie de cheie auto cu cip?",
+                    a: "Da, în majoritatea cazurilor este recomandat să veniți cu autoturismul pe Aleea Poporului 1, Petroșani, deoarece programarea telecomenzii și verificarea sincronizării cipului cu imobilizatorul mașinii se fac direct pe autoturism pentru a vă garanta funcționarea 100%."
+                },
+                en: {
+                    q: "Do I need to bring my car to the shop for a transponder key copy?",
+                    a: "Yes, in most cases we recommend bringing your vehicle to Aleea Poporului 1, Petroșani. Programming the remote and syncing the transponder chip with the immobilizer are tested directly on the vehicle to guarantee 100% functionality."
+                }
+            },
+            {
+                ro: {
+                    q: "Cât timp durează realizarea unei chei auto sau schimbarea unei carcase?",
+                    a: "Schimbarea unei baterii sau a unei carcase durează între 5 și 20 de minute. Multiplicarea unei chei auto cu cip sau cu telecomandă durează în medie între 20 și 45 de minute, în funcție de marca și anul mașinii."
+                },
+                en: {
+                    q: "How long does it take to make a car key or replace a shell?",
+                    a: "Replacing a battery or key shell takes 5 to 20 minutes. Duplicating and programming a transponder or remote car key typically takes between 20 and 45 minutes depending on the car make and year."
+                }
+            },
+            {
+                ro: "Ce acte sunt necesare pentru programarea unei chei auto?",
+                q_ro: "Ce acte sunt necesare pentru multiplicarea sau programarea unei chei auto?",
+                a_ro: "Pentru siguranța dumneavoastră și conform normelor legale, la programarea cheilor auto vă rugăm să aveți la dumneavoastră actul de identitate (CI) și certificatul de înmatriculare (talonul) sau dovada proprietății autoturismului.",
+                q_en: "What documents are required for car key programming?",
+                a_en: "For your security and in compliance with legal regulations, please bring a valid ID card and the vehicle registration certificate (or proof of ownership) when programming automotive keys."
+            },
+            {
+                ro: {
+                    q: "Cheia mea încă pornește mașina, dar butoanele de cauciuc sunt rupte. Trebuie făcută o cheie nouă?",
+                    a: "Nu! Dacă partea electronică funcționează, putem înlocui doar carcasa exterioară (și micro-contactele de pe placă dacă sunt uzate), păstrând cipul și telecomanda originală la un cost mult mai redus."
+                },
+                en: {
+                    q: "My key still starts the car, but the rubber buttons are broken. Do I need a whole new key?",
+                    a: "No! If the internal circuit board works, we can simply replace the outer key shell (and solder new micro-switches if needed), keeping your original electronics and transponder at a fraction of the cost."
+                }
+            },
+            {
+                ro: {
+                    q: "Faceți și chei clasice pentru uși de apartament, yale sau lacăte?",
+                    a: "Sigur că da! Multiplicăm pe loc chei pentru cilindri de ușă (chei plate sau cu amprentă), yale, lacăte, cutii poștale și uși metalice, în doar câteva minute."
+                },
+                en: {
+                    q: "Do you also duplicate standard apartment door keys and padlocks?",
+                    a: "Absolutely! We duplicate standard cylinder keys, high-security dimple keys, cross keys, mailbox keys, and padlock keys on the spot in just a few minutes."
+                }
+            }
+        ];
+
+        let currentLang = "ro";
+        let currentFilter = "all";
+        let currentUrgency = "spare";
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toast-message");
+            toastMsg.textContent = msg;
+            toast.classList.remove("hidden");
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toast.classList.add("hidden");
+            }, 3000);
+        }
+
+        function copyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand("copy");
+                showToast(i18nData[currentLang].copiedToast);
+            } catch (err) {
+                showToast(text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function getRomaniaTimeParts() {
+            const now = new Date();
+            const formatter = new Intl.DateTimeFormat("en-US", {
+                timeZone: "Europe/Bucharest",
+                weekday: "short",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            });
+            const parts = formatter.formatToParts(now);
+            let weekdayStr = "Mon";
+            let hour = 12;
+            let minute = 0;
+
+            for (const p of parts) {
+                if (p.type === "weekday") weekdayStr = p.value;
+                if (p.type === "hour") hour = parseInt(p.value, 10);
+                if (p.type === "minute") minute = parseInt(p.value, 10);
+            }
+            if (hour === 24) hour = 0;
+
+            const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+            const dayIndex = dayMap[weekdayStr] !== undefined ? dayMap[weekdayStr] : now.getDay();
+            return { dayIndex, hour, minute };
+        }
+
+        function updateLiveOpenStatus() {
+            const { dayIndex, hour, minute } = getRomaniaTimeParts();
+            const totalMinutes = hour * 60 + minute;
+            const dict = i18nData[currentLang];
+
+            let isOpen = false;
+            let closeTimeStr = "";
+            let helperText = "";
+
+            if (dayIndex >= 1 && dayIndex <= 5) {
+                if (totalMinutes >= 600 && totalMinutes < 900) {
+                    isOpen = true;
+                    closeTimeStr = "15:00";
+                } else if (totalMinutes < 600) {
+                    helperText = dict.opensTodayAt;
+                } else {
+                    helperText = dict.opensTomorrowAt;
+                }
+            } else if (dayIndex === 6) {
+                if (totalMinutes >= 600 && totalMinutes < 780) {
+                    isOpen = true;
+                    closeTimeStr = "13:00";
+                } else if (totalMinutes < 600) {
+                    helperText = dict.opensTodayAt;
+                } else {
+                    helperText = dict.opensMondayAt;
+                }
+            } else {
+                helperText = dict.opensMondayAt;
+            }
+
+            if (isOpen) {
+                helperText = `${dict.closesAt} ${closeTimeStr}`;
+            }
+
+            const pad = (n) => String(n).padStart(2, "0");
+            const clockEl = document.getElementById("ro-live-clock");
+            if (clockEl) {
+                clockEl.textContent = `${dict.roClockPrefix} ${pad(hour)}:${pad(minute)}`;
+            }
+
+            const statusText = isOpen ? `${dict.statusOpen} (${closeTimeStr})` : dict.statusClosed;
+
+            const headerBadge = document.getElementById("header-status-badge");
+            const headerDot = document.getElementById("header-status-dot");
+            const headerText = document.getElementById("header-status-text");
+
+            const mobileDot = document.getElementById("mobile-status-dot");
+            const mobileText = document.getElementById("mobile-status-text");
+
+            const heroPill = document.getElementById("hero-status-pill");
+
+            const contactBadge = document.getElementById("contact-status-badge");
+            const contactDot = document.getElementById("contact-status-dot");
+            const contactText = document.getElementById("contact-status-text");
+            const nextHelper = document.getElementById("next-open-helper");
+
+            if (nextHelper) nextHelper.textContent = helperText;
+
+            const openBadgeClasses = "bg-emerald-500/15 text-emerald-300 border-emerald-500/40";
+            const closedBadgeClasses = "bg-rose-500/15 text-rose-300 border-rose-500/40";
+
+            [headerBadge, contactBadge, heroPill].forEach(el => {
+                if (!el) return;
+                el.classList.remove("bg-emerald-500/15", "text-emerald-300", "border-emerald-500/40", "bg-rose-500/15", "text-rose-300", "border-rose-500/40");
+                const classesToAdd = (isOpen ? openBadgeClasses : closedBadgeClasses).split(" ");
+                el.classList.add(...classesToAdd);
+            });
+
+            [headerDot, mobileDot, contactDot].forEach(dot => {
+                if (!dot) return;
+                dot.classList.remove("bg-emerald-400", "bg-rose-400");
+                dot.classList.add(isOpen ? "bg-emerald-400" : "bg-rose-400");
+            });
+
+            if (headerText) headerText.textContent = statusText;
+            if (mobileText) {
+                mobileText.textContent = statusText;
+                mobileText.className = isOpen ? "text-emerald-400" : "text-rose-400";
+            }
+            if (heroPill) heroPill.textContent = statusText;
+            if (contactText) contactText.textContent = statusText;
+
+            document.querySelectorAll(".schedule-row").forEach(row => {
+                const rowDay = parseInt(row.getAttribute("data-day"), 10);
+                row.classList.remove("bg-amber-500/15", "text-amber-300", "font-bold");
+                const existingBadge = row.querySelector(".today-pill");
+                if (existingBadge) existingBadge.remove();
+
+                if (rowDay === dayIndex) {
+                    row.classList.add("bg-amber-500/15", "text-amber-300", "font-bold");
+                    const firstSpan = row.querySelector("span");
+                    if (firstSpan) {
+                        const badge = document.createElement("span");
+                        badge.className = "today-pill ml-2 px-2 py-0.5 text-[10px] rounded-md bg-amber-500 text-slate-950 font-extrabold";
+                        badge.textContent = dict.todayTag;
+                        firstSpan.appendChild(badge);
+                    }
+                }
+            });
+        }
+
+        function renderServices() {
+            const grid = document.getElementById("services-grid");
+            const dict = i18nData[currentLang];
+            grid.innerHTML = "";
+
+            const filtered = servicesList.filter(item => currentFilter === "all" || item.category === currentFilter);
+
+            filtered.forEach(service => {
+                const content = service[currentLang];
+                const card = document.createElement("div");
+                card.className = "glass-panel rounded-3xl p-6 flex flex-col justify-between card-hover";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid ${service.icon}"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-slate-900 text-amber-300 border border-slate-700">${content.tag}</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white mb-2">${content.title}</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-5">${content.desc}</p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/90 space-y-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-slate-400 flex items-center gap-1.5">
+                                <i class="fa-regular fa-clock text-amber-400"></i>
+                                <span>${service.timeEst}</span>
+                            </span>
+                            <span class="font-mono font-bold text-amber-400 text-sm">${service.priceRange}</span>
+                        </div>
+                        <button type="button" data-service-id="${service.id}" class="select-service-calc-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold text-xs transition-all border border-slate-700 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span>${dict.selectInCalcBtn}</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.querySelectorAll(".select-service-calc-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const sId = btn.getAttribute("data-service-id");
+                    const selectEl = document.getElementById("calc-service");
+                    if (selectEl) {
+                        selectEl.value = sId;
+                        updateCalculator();
+                        document.getElementById("estimator").scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+        }
+
+        function populateCalculatorSelects() {
+            const serviceSelect = document.getElementById("calc-service");
+            const brandSelect = document.getElementById("calc-brand");
+            const yearSelect = document.getElementById("calc-year");
+
+            const prevService = serviceSelect.value || "chip_key";
+            const prevBrand = brandSelect.value || "dacia_renault";
+            const prevYear = yearSelect.value || "2009_2016";
+
+            serviceSelect.innerHTML = "";
+            Object.keys(calculatorCatalog).forEach(key => {
+                const opt = document.createElement("option");
+                opt.value = key;
+                opt.textContent = calculatorCatalog[key][currentLang];
+                serviceSelect.appendChild(opt);
+            });
+            serviceSelect.value = prevService;
+
+            brandSelect.innerHTML = "";
+            brandMultipliers.forEach(b => {
+                const opt = document.createElement("option");
+                opt.value = b.id;
+                opt.textContent = b[currentLang];
+                brandSelect.appendChild(opt);
+            });
+            brandSelect.value = prevBrand;
+
+            yearSelect.innerHTML = "";
+            yearBrackets.forEach(y => {
+                const opt = document.createElement("option");
+                opt.value = y.id;
+                opt.textContent = y[currentLang];
+                yearSelect.appendChild(opt);
+            });
+            yearSelect.value = prevYear;
+        }
+
+        function updateCalculator() {
+            const serviceKey = document.getElementById("calc-service").value || "chip_key";
+            const brandKey = document.getElementById("calc-brand").value || "dacia_renault";
+            const yearKey = document.getElementById("calc-year").value || "2009_2016";
+            const notes = document.getElementById("calc-notes").value.trim();
+
+            const serviceObj = calculatorCatalog[serviceKey];
+            const brandObj = brandMultipliers.find(b => b.id === brandKey) || brandMultipliers[0];
+            const yearObj = yearBrackets.find(y => y.id === yearKey) || yearBrackets[1];
+
+            let minPrice = serviceObj.baseMin;
+            let maxPrice = serviceObj.baseMax;
+
+            if (serviceObj.isAuto && serviceKey !== "switch_battery") {
+                minPrice = Math.round((minPrice * brandObj.factor * yearObj.factor) / 5) * 5;
+                maxPrice = Math.round((maxPrice * brandObj.factor * yearObj.factor) / 5) * 5;
+            }
+
+            if (currentUrgency === "damaged" && serviceKey === "shell_replace") {
+                maxPrice += 25;
+            }
+
+            document.getElementById("est-service-Title").textContent = serviceObj[currentLang];
+            document.getElementById("est-time-badge").textContent = `~${serviceObj.time}`;
+            document.getElementById("est-price-value").textContent = `${minPrice} - ${maxPrice} RON`;
+
+            const urgencyLabels = {
+                ro: {
+                    spare: "Am o cheie funcțională (doresc copie)",
+                    damaged: "Cheie deteriorată / uzată",
+                    urgent: "Prioritar azi în atelier"
+                },
+                en: {
+                    spare: "Have a working key (need spare copy)",
+                    damaged: "Damaged / worn key",
+                    urgent: "Priority today in shop"
+                }
+            };
+
+            let summaryText = "";
+            if (currentLang === "ro") {
+                summaryText = `Salut COCO Chei Auto Petroșani! Doresc o ofertă pentru: ${serviceObj.ro}. Vehicul/Tip: ${brandObj.ro} (${yearObj.ro}). Situație: ${urgencyLabels.ro[currentUrgency]}.`;
+                if (notes) summaryText += ` Detalii: ${notes}.`;
+                summaryText += ` Estimare afișată pe site: ${minPrice}-${maxPrice} RON.`;
+            } else {
+                summaryText = `Hello COCO Chei Auto Petroșani! I would like an inquiry for: ${serviceObj.en}. Vehicle/Type: ${brandObj.en} (${yearObj.en}). Status: ${urgencyLabels.en[currentUrgency]}.`;
+                if (notes) summaryText += ` Details: ${notes}.`;
+                summaryText += ` Website estimate: ${minPrice}-${maxPrice} RON.`;
+            }
+
+            document.getElementById("inquiry-preview-text").textContent = summaryText;
+
+            const encodedText = encodeURIComponent(summaryText);
+            document.getElementById("whatsapp-inquiry-btn").href = `https://wa.me/40726169868?text=${encodedText}`;
+            document.getElementById("sms-inquiry-btn").href = `sms:0726169868?body=${encodedText}`;
+        }
+
+        function renderFaq() {
+            const container = document.getElementById("faq-container");
+            container.innerHTML = "";
+
+            faqItems.forEach((item, index) => {
+                const question = item[currentLang] && item[currentLang].q ? item[currentLang].q : (currentLang === "ro" ? item.q_ro : item.q_en);
+                const answer = item[currentLang] && item[currentLang].a ? item[currentLang].a : (currentLang === "ro" ? item.a_ro : item.a_en);
+                const isOpen = index === 0;
+
+                const wrapper = document.createElement("div");
+                wrapper.className = "glass-panel rounded-2xl border border-slate-800 overflow-hidden";
+                wrapper.innerHTML = `
+                    <button type="button" class="faq-toggle-btn w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-slate-900/50 transition-colors">
+                        <span class="font-bold text-sm sm:text-base text-white">${question}</span>
+                        <span class="w-8 h-8 rounded-xl bg-slate-800 text-amber-400 flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 ${isOpen ? '' : 'hidden'}">
+                        ${answer}
+                    </div>
+                `;
+                container.appendChild(wrapper);
+            });
+
+            document.querySelectorAll(".faq-toggle-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const ans = btn.nextElementSibling;
+                    const iconBox = btn.querySelector("span:last-child");
+                    const isHidden = ans.classList.contains("hidden");
+                    if (isHidden) {
+                        ans.classList.remove("hidden");
+                        iconBox.classList.add("rotate-180");
+                    } else {
+                        ans.classList.add("hidden");
+                        iconBox.classList.remove("rotate-180");
+                    }
+                });
+            });
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            document.getElementById("lang-current").textContent = lang.toUpperCase();
+            document.getElementById("lang-other").textContent = lang === "ro" ? "EN" : "RO";
+
+            const dict = i18nData[lang];
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            renderServices();
+            populateCalculatorSelects();
+            updateCalculator();
+            renderFaq();
+            updateLiveOpenStatus();
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            applyLanguage("ro");
+
+            setInterval(updateLiveOpenStatus, 30000);
+
+            document.getElementById("lang-toggle").addEventListener("click", () => {
+                applyLanguage(currentLang === "ro" ? "en" : "ro");
+            });
+
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+            mobileMenuBtn.addEventListener("click", () => {
+                const isHidden = mobileMenu.classList.contains("hidden");
+                if (isHidden) {
+                    mobileMenu.classList.remove("hidden");
+                    mobileMenuIcon.className = "fa-solid fa-xmark text-lg";
+                } else {
+                    mobileMenu.classList.add("hidden");
+                    mobileMenuIcon.className = "fa-solid fa-bars text-lg";
+                }
+            });
+
+            document.querySelectorAll(".mobile-nav-link").forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.add("hidden");
+                    mobileMenuIcon.className = "fa-solid fa-bars text-lg";
+                });
+            });
+
+            document.querySelectorAll(".service-filter-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    currentFilter = btn.getAttribute("data-filter");
+                    document.querySelectorAll(".service-filter-btn").forEach(b => {
+                        b.className = "service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800";
+                    });
+                    btn.className = "service-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20";
+                    renderServices();
+                });
+            });
+
+            ["calc-service", "calc-brand", "calc-year", "calc-notes"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener("change", updateCalculator);
+                    el.addEventListener("input", updateCalculator);
+                }
+            });
+
+            document.querySelectorAll(".urgency-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    currentUrgency = btn.getAttribute("data-urgency");
+                    document.querySelectorAll(".urgency-btn").forEach(b => {
+                        b.className = "urgency-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:border-slate-700 transition-all";
+                        const dot = b.querySelector("span.w-2");
+                        if (dot) dot.className = "w-2 h-2 rounded-full bg-slate-700";
+                    });
+                    btn.className = "urgency-btn text-left p-3.5 rounded-xl border border-amber-500 bg-amber-500/15 text-white transition-all";
+                    const activeDot = btn.querySelector("span.w-2");
+                    if (activeDot) activeDot.className = "w-2 h-2 rounded-full bg-amber-400";
+                    updateCalculator();
+                });
+            });
+
+            document.getElementById("copy-inquiry-btn").addEventListener("click", () => {
+                const txt = document.getElementById("inquiry-preview-text").textContent;
+                copyTextToClipboard(txt);
+            });
+
+            document.getElementById("copy-address-btn").addEventListener("click", () => {
+                copyTextToClipboard("Aleea Poporului 1, Petroșani, Jud. Hunedoara, România");
+            });
+
+            document.getElementById("copy-phone-btn").addEventListener("click", () => {
+                copyTextToClipboard("0726169868");
+            });
+        });
+    </script>
+</body>
+</html>
